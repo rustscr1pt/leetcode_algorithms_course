@@ -1,32 +1,18 @@
-from typing import List
-
-
-def runningSum(nums: List[int]) -> List[int]:
-    if len(nums) > 0:
-        prefix = [nums[0]]
-        for index in range(1, len(nums)):
-            prefix.append(nums[index] + prefix[index - 1])
-        return prefix
+def checkIfPangram(sentence: str) -> bool:
+    hash = {}
+    for index in range(len(sentence)):
+        letter = sentence[index]
+        if letter.isalpha() and letter.islower():
+            hash[letter] = index
+    if len(hash) == 26:
+        return True
     else:
-        return []
+        return False
 
 
-def minStartValue(nums: List[int]) -> int:
-    if len(nums) > 0:
-        memo = nums[0]
-        prefix = [nums[0]]
-        for index in range(1, len(nums)):
-            calculated = nums[index] + prefix[index - 1]
-            prefix.append(calculated)
-            if calculated < memo:
-                memo = calculated
-        print(prefix)
-        if memo > 0:
-            return 1
-        else:
-            return abs(memo) + 1
+
+def checkIfPangram(sentence: str) -> bool:
+    if len(set(sentence)) == 26:
+        return True
     else:
-        return 0
-
-
-print(minStartValue([2,3,5,-5,-1]))
+        return False

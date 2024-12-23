@@ -58,3 +58,30 @@ def find_numbers(nums):
 
     return ans
 
+
+
+# A pangram is a sentence where every letter of the English alphabet appears at least once.
+#
+# Given a string sentence containing only lowercase English letters, return true if sentence is a pangram, or false otherwise.
+# Input: sentence = "thequickbrownfoxjumpsoverthelazydog"
+# Output: true
+# Explanation: sentence contains at least one of every letter of the English alphabet.
+# Input: sentence = "leetcode"
+# Output: false
+
+
+def checkIfPangram(sentence: str) -> bool:
+    hash = {}
+    for index in range(len(sentence)):
+        letter = sentence[index]
+        if letter.isalpha() and letter.islower():
+            hash[letter] = index
+    if len(hash) == 26:
+        return True
+    else:
+        return False
+
+
+
+def checkIfPangram(sentence: str) -> bool:
+    return len(set(sentence)) == 26
