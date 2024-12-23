@@ -1,18 +1,12 @@
-def checkIfPangram(sentence: str) -> bool:
-    hash = {}
-    for index in range(len(sentence)):
-        letter = sentence[index]
-        if letter.isalpha() and letter.islower():
-            hash[letter] = index
-    if len(hash) == 26:
-        return True
-    else:
-        return False
+from typing import List
 
 
+def countElements(arr: List[int]) -> int:
+    cleaned = set(arr)
+    memo = 0
+    for number in arr:
+        if number + 1 in cleaned:
+            memo += 1
+    return memo
 
-def checkIfPangram(sentence: str) -> bool:
-    if len(set(sentence)) == 26:
-        return True
-    else:
-        return False
+print(countElements([1,1,3,3,5,5,7,7]))

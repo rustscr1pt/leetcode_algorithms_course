@@ -85,3 +85,51 @@ def checkIfPangram(sentence: str) -> bool:
 
 def checkIfPangram(sentence: str) -> bool:
     return len(set(sentence)) == 26
+
+
+
+
+# Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
+# Input: nums = [3,0,1]
+# Output: 2
+# Explanation: n = 3 since there are 3 numbers, so all numbers are in the range [0,3]. 2 is the missing number in the range since it does not appear in nums.
+# Input: nums = [0,1]
+# Output: 2
+# Explanation: n = 2 since there are 2 numbers, so all numbers are in the range [0,2]. 2 is the missing number in the range since it does not appear in nums.
+# Input: nums = [9,6,4,2,3,5,7,0,1]
+# Output: 8
+# Explanation: n = 9 since there are 9 numbers, so all numbers are in the range [0,9]. 8 is the missing number in the range since it does not appear in nums.
+from typing import List
+
+def missingNumber(nums: List[int]) -> int:
+    cleaned = set(nums)
+    print(cleaned)
+    for index in range(len(nums) + 1):
+        if not index in cleaned:
+            return index
+
+
+
+# Given an integer array arr, count how many elements x there are, such that x + 1 is also in arr. If there are duplicates in arr, count them separately.
+#
+# Input: arr = [1,2,3]
+# Output: 2
+# Explanation: 1 and 2 are counted cause 2 and 3 are in arr.
+#
+# Input: arr = [1,1,3,3,5,5,7,7]
+# Output: 0
+# Explanation: No numbers are counted, cause there is no 2, 4, 6, or 8 in arr.
+
+
+from typing import List
+
+
+def countElements(arr: List[int]) -> int:
+    cleaned = set(arr)
+    memo = 0
+    for number in arr:
+        if number + 1 in cleaned:
+            memo += 1
+    return memo
+
+print(countElements([1,1,3,3,5,5,7,7]))
