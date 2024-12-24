@@ -70,3 +70,37 @@ class Solution:
 
 
 
+
+
+# Example 3: 1941. Check if All Characters Have Equal Number of Occurrences
+#
+# Given a string s, determine if all characters have the same frequency.
+#
+# For example, given s = "abacbc", return true. All characters appear twice. Given s = "aaabb", return false. "a" appears 3 times, "b" appears 2 times. 3 != 2.
+
+# Using our knowledge of hash maps and sets, this is a straightforward problem. Use a hash map counts to count all character frequencies. Iterate through s and get the frequency of every character. Check if all frequencies are the same.
+#
+# Because a set ignores duplicates, we can put all the frequencies in a set and check if the length is 1 to verify if the frequencies are all the same.
+#
+# Click here for a more detailed explanation if needed
+#
+# Recall from the first article of the chapter that sets ignore frequency. If you add the same element to a set 100 times, the first operation will add it, then the next 99 will do nothing.
+#
+# In this problem, we want to determine if there exists only one unique frequency. We can first find the frequencies by counting each character using a hash map. After counting, the values of the hash map are our frequencies.
+#
+# If there is only one unique frequency, then after adding all the values to a set, the set will have a length of 1. If there are any characters with different frequencies, then the set would have a length greater than 1, as it would hold all unique frequencies.
+
+from collections import defaultdict
+
+
+class Solution:
+    def areOccurrencesEqual(self, s: str) -> bool:
+        counts = defaultdict(int)
+        for c in s:
+            counts[c] += 1
+
+        frequencies = counts.values()
+        return len(set(frequencies)) == 1
+
+# Given nn as the length of s, it costs O(n)O(n) to populate the hash map, then O(n)O(n) to convert the hash map's values to a set. This gives us a time complexity of O(n)O(n). The space that the hash map and set would occupy is equal to the number of unique characters. As previously discussed, some people would argue that this is O(1)O(1) since the characters come from the English alphabet, which is bounded by a constant. A more general answer would be to say that the space complexity is O(k)O(k), where kk is the number of characters that could be in the input, which happens to be 26 in this problem.
+
