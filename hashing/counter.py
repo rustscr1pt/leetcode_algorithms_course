@@ -104,3 +104,26 @@ class Solution:
 
 # Given nn as the length of s, it costs O(n)O(n) to populate the hash map, then O(n)O(n) to convert the hash map's values to a set. This gives us a time complexity of O(n)O(n). The space that the hash map and set would occupy is equal to the number of unique characters. As previously discussed, some people would argue that this is O(1)O(1) since the characters come from the English alphabet, which is bounded by a constant. A more general answer would be to say that the space complexity is O(k)O(k), where kk is the number of characters that could be in the input, which happens to be 26 in this problem.
 
+
+
+# Given an integer array nums, return the largest integer that only occurs once. If no integer occurs once, return -1.
+#
+# Input: nums = [5,7,3,9,4,9,8,3,1]
+# Output: 8
+# Explanation: The maximum integer in the array is 9 but it is repeated. The number 8 occurs only once, so it is the answer.
+#
+# Input: nums = [9,9,8,8]
+# Output: -1
+# Explanation: There is no number that occurs only once.
+
+def main(numbers : list[int]) -> int:
+    dictionary = {}
+    for number in numbers:
+        dictionary[number] = dictionary.get(number, 0) + 1
+    cleaned = [key for key in dictionary if dictionary[key] == 1]
+    if len(cleaned) == 0:
+        return -1
+    else:
+        return max(cleaned)
+
+print(main([5,7,3,9,4,9,8,3,1]))
