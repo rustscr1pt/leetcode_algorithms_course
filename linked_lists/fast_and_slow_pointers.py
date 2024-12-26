@@ -1,3 +1,8 @@
+# Example 1: Given the head of a linked list with an odd number of nodes head, return the value of the node in the middle.
+#
+# For example, given a linked list that represents 1 -> 2 -> 3 -> 4 -> 5, return 3.
+
+# The most elegant solution comes from using the fast and slow pointer technique. If we have one pointer moving twice as fast as the other, then by the time it reaches the end, the slow pointer will be halfway through since it is moving at half the speed.
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
