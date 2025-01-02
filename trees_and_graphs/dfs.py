@@ -42,3 +42,8 @@ class Solution:
         left = self.maxDepth(root.left)
         right = self.maxDepth(root.right)
         return max(left, right) + 1
+
+# A really important concept regarding recursion is that each function call stores its own variables. Because we are calling the function for each node, that means every node has its own unique values of left and right (in the video, we are representing this with the L and R at each node). When we get to the node labeled 6, there are actually 4 different values of left simultaneously.
+#
+# It's that simple! Thinking recursively takes some time to get the hang of, but hopefully with the examples in this article, you will gain the intuition needed to quickly solve binary tree problems.
+
